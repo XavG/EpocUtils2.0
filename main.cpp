@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <conio.h>
 
-#include "../New epocutils/EpocUtils2.0/newEpocUtils.h"
+#include "../New epocutils/EpocUtils2.0/epocutils.h"
 
 using namespace std;
 
