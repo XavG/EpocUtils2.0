@@ -205,15 +205,16 @@ void epocutils::handleEvents(bool& connected, int& epoc_state, EmoEngineEventHan
             epocheadset.laugh = expressivStates[ FE_LAUGH  ];           //UPDATE : EXP_LAUGH -> FE_LAUGH
 
             // Affective suite
-            epocheadset.shortTermExcitement = ES_AffectivGetExcitementShortTermScore(eState);
+            /*UPDATE
+            epocheadset.shortTermExcitement = ES_AffectivGetExcitementShortTermScore(eState);       // UPDATE : Can't find the new function
             epocheadset.longTermExcitement = ES_AffectivGetExcitementLongTermScore(eState);
             epocheadset.engagementBoredom = ES_AffectivGetEngagementBoredomScore(eState);
-
+            */
             // Cognitiv suite
-            epocheadset.cogntivAction = static_cast<int>(ES_CognitivGetCurrentAction(eState));
-            epocheadset.cogntiviActionConfidence = ES_CognitivGetCurrentActionPower(eState);
+            epocheadset.cogntivAction = static_cast<int>(IS_MentalCommandGetCurrentAction(eState)); // UPDATE : IS_Cognitiv[...] -> IS_MentalCommand[...]
+            epocheadset.cogntiviActionConfidence = IS_MentalCommandGetCurrentActionPower(eState);
 
-            epocheadset.newDataToRead = true; // we update our boolean ot indicate that data is yet to be read
+            epocheadset.newDataToRead = true; // we update our boolean to indicate that data is yet to be read
       }
     } else if (epoc_state != EDK_NO_EVENT)
     {
@@ -223,3 +224,5 @@ void epocutils::handleEvents(bool& connected, int& epoc_state, EmoEngineEventHan
     }
   }
 }
+
+/* UPDATE DONE - 2016 - By XavG <xav.guerin@hotmail.fr>

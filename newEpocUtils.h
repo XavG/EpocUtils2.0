@@ -1,6 +1,6 @@
 /*  epocutils.h - header file
 *
-*   Update node epocutils for Emotiv EPOC SDK Community - XavG <xav.guerin@hotmail.fr> 2016
+*   UPDATE node epocutils for Emotiv EPOC SDK Community - XavG <xav.guerin@hotmail.fr> 2016
 *
 *   supposed to be used:  1 -> as a utility class ( include header file in necessary .cpp file )
 *                         2 -> as a utility class, embedded in a library that is available system wide ( .so file )
