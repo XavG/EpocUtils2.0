@@ -64,39 +64,29 @@ namespace epocutils
     float engagementBoredom;
           // Digg the doc & ask Emotiv for the 'Meditation' & 'Frustration'
     // Cognitiv suite
-    int cogntivAction;
-    float cogntiviActionConfidence;
+    int mentalCommandAction;
+    float mentalCommandActionPower;
 
   //} EpocHeadset;
   };
 
-
-  /* connect to the Epoc headset */
-  int connect(bool& connected);
-
-  /* disconnect from the Epoc headset ( WARNING: this function WILL NOT free the 'EmoStateHandle' neither the 'EmoEngineEventHandle' ! ) */
-  void disconnect(bool& connected);
-
-  /* disconnect from the Epoc headset AND clean up */
-  void disconnect(bool& connected, EmoStateHandle& eState, EmoEngineEventHandle& eEvent);
-
-  /* create an 'EmoEngineEventHandle' */
+  /* 0 - create an 'EmoEngineEventHandle' */
   EmoEngineEventHandle createEventHandle();
 
-  /* create an 'EmoStateHandle' */
+  /* 0 - create an 'EmoStateHandle' */
   EmoStateHandle createStateHandle();
 
-  /* initialize the struct members ( I actually don't know if it's actually required, but it's always nice to init parameters before setting values to them anyway ( ... ) */
-  //void initializeEpocHeadsetStruct(unsigned int& userID, EpocHeadset& epocheadset);
+  /* 1 - initialize the struct members ( I actually don't know if it's actually required, but it's always nice to init parameters before setting values to them anyway ( ... ) */
   void initializeEpocHeadsetStruct(unsigned int& userID, EpocHeadset_t& epocheadset);
 
-  /* To DO - 'createInitializedEpocHeadsetStruct'*/
+  /* 2 - connect to the Epoc headset */
+  int connect(bool& connected);
 
-  /* handle fresh data from the Epoc headset, if connected, & update the passed 'EpocHeadset_struct' structure with that data */
-  //void handleEvents(bool& connected, int& epoc_state, EmoEngineEventHandle& eEvent, EmoStateHandle& eState, unsigned int& userID, EpocHeadset& epocheadset);
+  /* 3 - handle fresh data from the Epoc headset, if connected, & update the passed 'EpocHeadset_struct' structure with that data */
   void handleEvents(bool& connected, int& epoc_state, EmoEngineEventHandle& eEvent, EmoStateHandle& eState, unsigned int& userID, EpocHeadset_t& epocheadset);
 
-  /* TO DO - even just to know how to do it - ~same fcn as above but accept a 'fcn&' as last argument, to wich it 'd pass a struct/class when done processing new events ( if any ) */
+  /* 4 - disconnect from the Epoc headset AND clean up */
+  void disconnect(bool& connected, EmoStateHandle& eState, EmoEngineEventHandle& eEvent);
 
 }
 

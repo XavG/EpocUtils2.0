@@ -33,8 +33,56 @@ int epocutils::highFive()
 /* the REAL functions & stuff of the 'epocutils' helper */
 /* ---------------------------------------------------- */
 
+/* 0 - create an 'EmoEngineEventHandle' */
+EmoEngineEventHandle epocutils::createEventHandle()
+{
+  return IEE_EmoEngineEventCreate(); //UPDATE : EE_EmoEngineEventCreate -> IEE_EmoEngineEventCreate //// simply return the original fcn, wrapped
+}
 
-/* connect to the Epoc headset */
+/* 0 - create an 'EmoStateHandle' */
+EmoStateHandle epocutils::createStateHandle()
+{
+  return IEE_EmoStateCreate(); //UPDATE : EE_EmoStateCreate -> IEE_EmoStateCreate //// simply return the original fcn, wrapped
+}
+
+/* 1 - initialize the struct members */
+void epocutils::initializeEpocHeadsetStruct(unsigned int& userID, epocutils::EpocHeadset_t& epocheadset)
+{
+  // we init the bool that we'll use to know if we have unread data from the Epoc headset
+  epocheadset.newDataToRead = false;
+
+  // we initialize the EpocHeadset struct with all its member parameters to 0, except the userID wich equals the one passed as argument
+  epocheadset.time = 0.0f;
+  epocheadset.userID = userID;
+  epocheadset.wirelessSignalStatus = 0;
+
+  // FacialExpression suite
+  epocheadset.isBlinking = 0;
+  epocheadset.isWinkingLeft = 0;
+  epocheadset.isWinkingRight = 0;
+  epocheadset.isLookingLeft = 0;
+  epocheadset.isLookingRight = 0;
+  epocheadset.eyebrow = 0.0f;
+  epocheadset.furrow = 0.0f;
+  epocheadset.smile = 0.0f;
+  epocheadset.clench = 0.0f;
+  epocheadset.smirkLeft = 0.0f;
+  epocheadset.smirkRight = 0.0f;
+  epocheadset.laugh = 0.0f;
+
+  // Emotiv suite
+  epocheadset.shortTermExcitement = 0.0f;
+  epocheadset.longTermExcitement = 0.0f;
+  epocheadset.engagementBoredom = 0.0f;
+
+  // MentalCommand suite
+  epocheadset.mentalCommandAction = 0;
+  epocheadset.mentalCommandActionPower = 0; // close, but not the same as 'power' ( YES, I DISAGREE with Emotiv's words on this ( ... )
+
+  std::cout << "epocutils:: Epoc headset struct initialized." << std::endl; // inform that the EpocHeadset struct has been initialized
+}
+
+/* 2 - connect to the Epoc headset */
 int epocutils::connect(bool& connected)
 {
 	/*UPDATE*/
@@ -80,82 +128,7 @@ int epocutils::connect(bool& connected)
 	}
 }
 
-
-/* disconnect from the Epoc headset ( WARNING: this function WILL NOT free the 'EmoStateHandle' neither the 'EmoEngineEventHandle' ! ) */
-/* UPDATE ::: REMOVE ????
-void epocutils::disconnect(bool& connected)
-{
-  EE_EngineDisconnect(); // we disconnect from the EmoEngine
-  connected = false; // we update the headset connection status ( a 'connected = false' will prevent new readings from the EmoEngine using 'epocutils::handleEvents()' )
-  std::cout << "epocutils:: Now disconnected from the Epoc headset." << std::endl; // inform that an error occured
-}
-*/
-
-/* disconnect from the Epoc headset AND clean up */
-void epocutils::disconnect(bool& connected, EmoStateHandle& eState, EmoEngineEventHandle& eEvent)
-{
-  IEE_EngineDisconnect(); //UPDATE : EE_EngineDisconnect -> IEE_EngineDisconnect// we disconnect from the EmoEngine
-  connected = false; // we update the headset connection status ( a 'connected = false' will prevent new readings from the EmoEngine using 'epocutils::handleEvents()' )
-  std::cout << "epocutils:: Now disconnected from the Epoc headset." << std::endl; // inform that an error occured
-  IEE_EmoStateFree(eState); //UPDATE : EE_...-> IEE_...// free the 'EmoStateHandle' instance
-  std::cout << "epocutils:: EmoStateHandle resources freed." << std::endl; // inform that the EmoStateHandle instance has been freed
-  IEE_EmoEngineEventFree(eEvent); //UPDATE : EE_...-> IEE_...//// free the 'EmoEngineEventHandle' instance
-  std::cout << "epocutils:: EmoEngineEventHandle resources freed." << std::endl; // inform that the EmoEngineEventHandle instance has been freed
-}
-
-/* create an 'EmoEngineEventHandle' */
-EmoEngineEventHandle epocutils::createEventHandle()
-{
-  return IEE_EmoEngineEventCreate(); //UPDATE : EE_EmoEngineEventCreate -> IEE_EmoEngineEventCreate //// simply return the original fcn, wrapped
-}
-
- /* create an 'EmoStateHandle' */
-EmoStateHandle epocutils::createStateHandle()
-{
-  return IEE_EmoStateCreate(); //UPDATE : EE_EmoStateCreate -> IEE_EmoStateCreate //// simply return the original fcn, wrapped
-}
-
-/*  initialize the struct members */
-//void initializeEpocHeadsetStruct(unsigned int& userID, epocutils::EpocHeadset& epocheadset)
-//void initializeEpocHeadsetStruct(unsigned int& userID, epocutils::EpocHeadset_struct& epocheadset)
-void epocutils::initializeEpocHeadsetStruct(unsigned int& userID, epocutils::EpocHeadset_t& epocheadset)
-{
-  // we init the bool that we'll use to know if we have unread data from the Epoc headset
-  epocheadset.newDataToRead = false;
-
-  // we initialize the EpocHeadset struct with all its member parameters to 0, except the userID wich equals the one passed as argument
-  epocheadset.time = 0.0f;
-  epocheadset.userID = userID;
-  epocheadset.wirelessSignalStatus = 0;
-
-  // FacialExpression suite
-  epocheadset.isBlinking = 0;
-  epocheadset.isWinkingLeft = 0;
-  epocheadset.isWinkingRight = 0;
-  epocheadset.isLookingLeft = 0;
-  epocheadset.isLookingRight = 0;
-  epocheadset.eyebrow = 0.0f;
-  epocheadset.furrow = 0.0f;
-  epocheadset.smile = 0.0f;
-  epocheadset.clench = 0.0f;
-  epocheadset.smirkLeft = 0.0f;
-  epocheadset.smirkRight = 0.0f;
-  epocheadset.laugh = 0.0f;
-
-  // Emotiv suite
-  epocheadset.shortTermExcitement = 0.0f;
-  epocheadset.longTermExcitement = 0.0f;
-  epocheadset.engagementBoredom = 0.0f;
-
-  // MentalCommand suite
-  epocheadset.cogntivAction = 0;
-  epocheadset.cogntiviActionConfidence = 0; // close, but not the same as 'power' ( YES, I DISAGREE with Emotiv's words on this ( ... )
-
-  std::cout << "epocutils:: Epoc headset struct initialized." << std::endl; // inform that the EpocHeadset struct has been initialized
-}
-
-/* handle fresh data from the Epoc headset, if connected, & update the passed 'EpocHeadset_struct' structure with that data */
-//void epocutils::handleEvents(bool& connected, int& epoc_state, EmoEngineEventHandle& eEvent, EmoStateHandle& eState, unsigned int& userID, epocutils::EpocHeadset& epocheadset)
+/* 3 - handle fresh data from the Epoc headset, if connected, & update the passed 'EpocHeadset_struct' structure with that data */
 void epocutils::handleEvents(bool& connected, int& epoc_state, EmoEngineEventHandle& eEvent, EmoStateHandle& eState, unsigned int& userID, epocutils::EpocHeadset_t& epocheadset)
 {
   if ( connected )
@@ -211,10 +184,17 @@ void epocutils::handleEvents(bool& connected, int& epoc_state, EmoEngineEventHan
             epocheadset.engagementBoredom = ES_AffectivGetEngagementBoredomScore(eState);
             */
             // Cognitiv suite
-            epocheadset.cogntivAction = static_cast<int>(IS_MentalCommandGetCurrentAction(eState)); // UPDATE : IS_Cognitiv[...] -> IS_MentalCommand[...]
-            epocheadset.cogntiviActionConfidence = IS_MentalCommandGetCurrentActionPower(eState);
+            epocheadset.mentalCommandAction = static_cast<int>(IS_MentalCommandGetCurrentAction(eState)); // UPDATE : IS_Cognitiv[...] -> IS_MentalCommand[...]
+            epocheadset.mentalCommandActionPower = IS_MentalCommandGetCurrentActionPower(eState);
 
             epocheadset.newDataToRead = true; // we update our boolean to indicate that data is yet to be read
+
+            /* Print somes infrmations sent by the headset (or composer) */
+            std::cout << "Time : " << epocheadset.time << std::endl;
+            std::cout << "UserID : " << epocheadset.userID << std::endl;
+            std::cout << "IsBlinking : " << epocheadset.isBlinking << std::endl;
+            std::cout << "MentalCommand Action : " << epocheadset.mentalCommandAction << std::endl;
+            std::cout << "MentalCommand Action Power : " << epocheadset.mentalCommandActionPower << std::endl;
       }
     } else if (epoc_state != EDK_NO_EVENT)
     {
@@ -224,5 +204,18 @@ void epocutils::handleEvents(bool& connected, int& epoc_state, EmoEngineEventHan
     }
   }
 }
+
+/* 4 - disconnect from the Epoc headset AND clean up */
+void epocutils::disconnect(bool& connected, EmoStateHandle& eState, EmoEngineEventHandle& eEvent)
+{
+  IEE_EngineDisconnect(); //UPDATE : EE_EngineDisconnect -> IEE_EngineDisconnect// we disconnect from the EmoEngine
+  connected = false; // we update the headset connection status ( a 'connected = false' will prevent new readings from the EmoEngine using 'epocutils::handleEvents()' )
+  std::cout << "\nepocutils:: Now disconnected from the Epoc headset." << std::endl; // inform that an error occured
+  IEE_EmoStateFree(eState); //UPDATE : EE_...-> IEE_...// free the 'EmoStateHandle' instance
+  std::cout << "epocutils:: EmoStateHandle resources freed." << std::endl; // inform that the EmoStateHandle instance has been freed
+  IEE_EmoEngineEventFree(eEvent); //UPDATE : EE_...-> IEE_...//// free the 'EmoEngineEventHandle' instance
+  std::cout << "epocutils:: EmoEngineEventHandle resources freed." << std::endl; // inform that the EmoEngineEventHandle instance has been freed
+}
+
 
 /* UPDATE DONE - 2016 - By XavG <xav.guerin@hotmail.fr> */
