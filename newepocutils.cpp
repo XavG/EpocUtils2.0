@@ -225,4 +225,4 @@ void epocutils::handleEvents(bool& connected, int& epoc_state, EmoEngineEventHan
   }
 }
 
-/* UPDATE DONE - 2016 - By XavG <xav.guerin@hotmail.fr>
+/* UPDATE DONE - 2016 - By XavG <xav.guerin@hotmail.fr> */
