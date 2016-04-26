@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CBepocUtils2.0" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/CBepocUtils2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="..\..\require\lib\win32\edk.lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/CBepocUtils2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="..\..\require\lib\win64\edk.lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="../New epocutils/EpocUtils2.0/epocutils.cpp" />
+		<Unit filename="../New epocutils/EpocUtils2.0/epocutils.h" />
+		<Unit filename="EmotivCloudClient.h" />
+		<Unit filename="FacialExpressionDetection.h" />
+		<Unit filename="IEegData.h" />
+		<Unit filename="IEmoStateDLL.h" />
+		<Unit filename="Iedk.h" />
+		<Unit filename="IedkErrorCode.h" />
+		<Unit filename="MentalCommandDetection.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

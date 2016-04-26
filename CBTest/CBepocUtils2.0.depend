@@ -1,0 +1,137 @@
+# depslib dependency file v1.0
+1461338881 source:c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\newepocutils.cpp
+	"newEpocUtils.h"
+	<stdexcept>
+
+1461338881 c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\newepocutils.h
+	<iostream>
+	<map>
+	"Includes/Iedk.h"
+	"Includes/IedkErrorCode.h"
+	"Includes/IEmoStateDLL.h"
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\includes\iedk.h
+	"IEmotivProfile.h"
+	"IEmoStatePerformanceMetric.h"
+	"IedkOptimization.h"
+	"IedkErrorCode.h"
+	"IEmoStateDLL.h"
+	"FacialExpressionDetection.h"
+	"MentalCommandDetection.h"
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\includes\iedkerrorcode.h
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\includes\iemostatedll.h
+	<sys/types.h>
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\includes\facialexpressiondetection.h
+	"IEmoStateDLL.h"
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\includes\mentalcommanddetection.h
+	"IEmoStateDLL.h"
+
+1461694894 source:c:\users\xavier\documents\projet esme 2016\myprojecttest\cbepocutils2.0\main.cpp
+	<iostream>
+	<windows.h>
+	<conio.h>
+	"epocutils.h"
+
+1461695600 source:c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\epocutils.cpp
+	"epocutils.h"
+	<stdexcept>
+
+1461338881 c:\users\xavier\documents\projet esme 2016\myprojecttest\new epocutils\epocutils2.0\epocutils.h
+	<iostream>
+	<map>
+	"Includes/Iedk.h"
+	"Includes/IedkErrorCode.h"
+	"Includes/IEmoStateDLL.h"
+
+1461695639 c:\users\xavier\documents\projet esme 2016\myprojecttest\cbepocutils2.0\epocutils.h
+	<iostream>
+	<map>
+	<conio.h>
+	<windows.h>
+	"Iedk.h"
+	"IedkErrorCode.h"
+	"IEmoStateDLL.h"
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\cbepocutils2.0\iedk.h
+	"IEmotivProfile.h"
+	"IEmoStatePerformanceMetric.h"
+	"IedkOptimization.h"
+	"IedkErrorCode.h"
+	"IEmoStateDLL.h"
+	"FacialExpressionDetection.h"
+	"MentalCommandDetection.h"
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\cbepocutils2.0\iedkerrorcode.h
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\cbepocutils2.0\iemostatedll.h
+	<sys/types.h>
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\cbepocutils2.0\facialexpressiondetection.h
+	"IEmoStateDLL.h"
+
+1454415100 c:\users\xavier\documents\projet esme 2016\myprojecttest\cbepocutils2.0\mentalcommanddetection.h
+	"IEmoStateDLL.h"
+
+1461697324 source:c:\users\xavier\desktop\cbepocutils2.0\main.cpp
+	<iostream>
+	<windows.h>
+	<conio.h>
+	"epocutils.h"
+
+1461697598 c:\users\xavier\desktop\cbepocutils2.0\epocutils.h
+	<iostream>
+	<map>
+	<conio.h>
+	<windows.h>
+	"require/include/Iedk.h"
+	"require/include/IedkErrorCode.h"
+	"require/include/IEmoStateDLL.h"
+
+1454415100 c:\users\xavier\desktop\cbepocutils2.0\iedk.h
+	"IEmotivProfile.h"
+	"IEmoStatePerformanceMetric.h"
+	"IedkOptimization.h"
+	"IedkErrorCode.h"
+	"IEmoStateDLL.h"
+	"FacialExpressionDetection.h"
+	"MentalCommandDetection.h"
+
+1454415100 c:\users\xavier\desktop\cbepocutils2.0\iedkerrorcode.h
+
+1454415100 c:\users\xavier\desktop\cbepocutils2.0\iemostatedll.h
+	<sys/types.h>
+
+1454415100 c:\users\xavier\desktop\cbepocutils2.0\facialexpressiondetection.h
+	"IEmoStateDLL.h"
+
+1454415100 c:\users\xavier\desktop\cbepocutils2.0\mentalcommanddetection.h
+	"IEmoStateDLL.h"
+
+1459150638 c:\users\xavier\desktop\cbepocutils2.0\require\include\iedk.h
+	"IEmotivProfile.h"
+	"IEmoStatePerformanceMetric.h"
+	"IedkOptimization.h"
+	"IedkErrorCode.h"
+	"IEmoStateDLL.h"
+	"FacialExpressionDetection.h"
+	"MentalCommandDetection.h"
+
+1459150638 c:\users\xavier\desktop\cbepocutils2.0\require\include\iedkerrorcode.h
+
+1459150638 c:\users\xavier\desktop\cbepocutils2.0\require\include\iemostatedll.h
+	<sys/types.h>
+
+1459150638 c:\users\xavier\desktop\cbepocutils2.0\require\include\facialexpressiondetection.h
+	"IEmoStateDLL.h"
+
+1459150638 c:\users\xavier\desktop\cbepocutils2.0\require\include\mentalcommanddetection.h
+	"IEmoStateDLL.h"
+
+1461697656 source:c:\users\xavier\desktop\cbepocutils2.0\epocutils.cpp
+	"epocutils.h"
+	<stdexcept>
+
